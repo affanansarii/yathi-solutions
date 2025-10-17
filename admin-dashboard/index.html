@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard - FoodExpress</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    </head>
+    <body class="bg-gray-100">
+        <div class="min-h-screen">
+            <!-- Sidebar -->
+            <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
+                <div class="p-6">
+                    <h1 class="text-2xl font-bold text-gray-800">
+                        Admin Panel
+                    </h1>
+                </div>
+                <nav class="mt-6">
+                    <a
+                        href="#dashboard"
+                        class="block py-3 px-6 bg-orange-50 text-orange-500 border-r-4 border-orange-500"
+                    >
+                        Dashboard
+                    </a>
+                    <a
+                        href="#restaurants"
+                        class="block py-3 px-6 text-gray-600 hover:bg-gray-50"
+                    >
+                        Restaurants
+                    </a>
+                    <a
+                        href="#orders"
+                        class="block py-3 px-6 text-gray-600 hover:bg-gray-50"
+                    >
+                        Orders
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="ml-64">
+                <!-- Header -->
+                <header class="bg-white shadow-sm">
+                    <div class="flex justify-between items-center px-8 py-4">
+                        <h2 class="text-xl font-semibold text-gray-800">
+                            Dashboard
+                        </h2>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-600">Admin User</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats -->
+                <div class="p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 bg-blue-50 rounded-lg">
+                                    <i
+                                        data-lucide="shopping-bag"
+                                        class="w-8 h-8 text-blue-500"
+                                    ></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3
+                                        class="text-sm font-medium text-gray-600"
+                                    >
+                                        Total Orders
+                                    </h3>
+                                    <p
+                                        class="text-2xl font-semibold text-gray-800"
+                                        id="totalOrders"
+                                    >
+                                        0
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 bg-green-50 rounded-lg">
+                                    <i
+                                        data-lucide="dollar-sign"
+                                        class="w-8 h-8 text-green-500"
+                                    ></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3
+                                        class="text-sm font-medium text-gray-600"
+                                    >
+                                        Total Revenue
+                                    </h3>
+                                    <p
+                                        class="text-2xl font-semibold text-gray-800"
+                                        id="totalRevenue"
+                                    >
+                                        ₹0
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-sm p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 bg-purple-50 rounded-lg">
+                                    <i
+                                        data-lucide="store"
+                                        class="w-8 h-8 text-purple-500"
+                                    ></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3
+                                        class="text-sm font-medium text-gray-600"
+                                    >
+                                        Active Restaurants
+                                    </h3>
+                                    <p
+                                        class="text-2xl font-semibold text-gray-800"
+                                        id="activeRestaurants"
+                                    >
+                                        0
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Restaurant Form -->
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            Add New Restaurant
+                        </h3>
+                        <form id="addRestaurantForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input
+                                    type="text"
+                                    placeholder="Restaurant Name"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Cuisine Type"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Delivery Time"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Price for one"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition duration-200"
+                            >
+                                Add Restaurant
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Add Dish Form -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            Add Dish to Restaurant
+                        </h3>
+                        <form id="addDishForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <select
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    id="restaurantSelect"
+                                    required
+                                >
+                                    <option value="">Select Restaurant</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    placeholder="Dish Name"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="Price"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Category"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Description"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    required
+                                />
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition duration-200"
+                            >
+                                Add Dish
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            lucide.createIcons();
+
+            const API_BASE = "http://localhost:5000/api";
+
+            // Load admin stats
+            async function loadStats() {
+                try {
+                    const response = await fetch(`${API_BASE}/admin/stats`);
+                    const data = await response.json();
+
+                    document.getElementById("totalOrders").textContent =
+                        data.totalOrders;
+                    document.getElementById(
+                        "totalRevenue"
+                    ).textContent = `₹${data.totalRevenue}`;
+                    document.getElementById("activeRestaurants").textContent =
+                        data.activeRestaurants;
+                } catch (error) {
+                    console.error("Error loading stats:", error);
+                }
+            }
+
+            // Load restaurants for dropdown
+            async function loadRestaurants() {
+                try {
+                    const response = await fetch(`${API_BASE}/restaurants`);
+                    const restaurants = await response.json();
+
+                    const select = document.getElementById("restaurantSelect");
+                    select.innerHTML =
+                        '<option value="">Select Restaurant</option>';
+
+                    restaurants.forEach((restaurant) => {
+                        const option = document.createElement("option");
+                        option.value = restaurant.id;
+                        option.textContent = restaurant.name;
+                        select.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error("Error loading restaurants:", error);
+                }
+            }
+
+            // Add restaurant
+            document
+                .getElementById("addRestaurantForm")
+                .addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const formData = new FormData();
+                    const inputs = e.target.elements;
+
+                    formData.append("name", inputs[0].value);
+                    formData.append("cuisine", inputs[1].value);
+                    formData.append("deliveryTime", inputs[2].value);
+                    formData.append("price", inputs[3].value);
+                    if (inputs[4].files[0]) {
+                        formData.append("image", inputs[4].files[0]);
+                    }
+
+                    try {
+                        const response = await fetch(
+                            `${API_BASE}/admin/restaurants`,
+                            {
+                                method: "POST",
+                                body: formData,
+                            }
+                        );
+
+                        if (response.ok) {
+                            alert("Restaurant added successfully!");
+                            e.target.reset();
+                            loadRestaurants();
+                        }
+                    } catch (error) {
+                        console.error("Error adding restaurant:", error);
+                    }
+                });
+
+            // Add dish
+            document
+                .getElementById("addDishForm")
+                .addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const restaurantId =
+                        document.getElementById("restaurantSelect").value;
+                    if (!restaurantId) {
+                        alert("Please select a restaurant");
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    const inputs = e.target.elements;
+
+                    formData.append("name", inputs[1].value);
+                    formData.append("price", inputs[2].value);
+                    formData.append("category", inputs[3].value);
+                    formData.append("description", inputs[4].value);
+                    if (inputs[5].files[0]) {
+                        formData.append("image", inputs[5].files[0]);
+                    }
+
+                    try {
+                        const response = await fetch(
+                            `${API_BASE}/admin/restaurants/${restaurantId}/dishes`,
+                            {
+                                method: "POST",
+                                body: formData,
+                            }
+                        );
+
+                        if (response.ok) {
+                            alert("Dish added successfully!");
+                            e.target.reset();
+                        }
+                    } catch (error) {
+                        console.error("Error adding dish:", error);
+                    }
+                });
+
+            // Initialize
+            loadStats();
+            loadRestaurants();
+        </script>
+    </body>
+</html>

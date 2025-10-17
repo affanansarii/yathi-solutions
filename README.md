@@ -22,22 +22,6 @@ CORS - Cross-origin resource sharing
 
 UUID - Unique identifier generation
 
-Project Structure
-text
-food-delivery-app/
-├── backend/
-│   ├── server.js          # Express server
-│   ├── package.json       # Backend dependencies
-│   └── uploads/           # Image storage directory
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx        # Main React component
-│   │   ├── main.jsx       # React entry point
-│   │   └── index.css      # Tailwind styles
-│   ├── package.json       # Frontend dependencies
-│   └── tailwind.config.js # Tailwind configuration
-└── admin-dashboard/
-    └── index.html         # Admin panel
 Features
 Customer Facing
 Restaurant Listing - Browse all available restaurants
